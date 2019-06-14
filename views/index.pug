@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  table
+    tr
+      th ID
+      th Name
+      th Type 1
+      th Type 2
+    each pokemon in pokedexgen1
+      tr
+        td ##{pokemon.id}
+        td #{pokemon.name}
+        td #{pokemon.type1}
+        td #{pokemon.type2}
+
+  
