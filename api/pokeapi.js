@@ -1,5 +1,6 @@
 var express = require('express');
 var apirouter = express.Router();
+const db = require('../config/db');
 
 String.prototype.firstUpperCase = function() {
   let str1 = this.charAt(0).toUpperCase();
@@ -27,7 +28,7 @@ apirouter.get('/', function(req, res, next) {
   // });
   // console.log(req.db.collection.find().toArray((err, results) => console.log(results)));
   let pokeList = [];
-  req.db.collection.find().toArray((err, results) => {
+  db.collection.find().toArray((err, results) => {
     results.forEach(pokemon => {
       const pokeItem = {
         id: pokemon['ID'],
@@ -56,7 +57,7 @@ apirouter.get('/:id', function(req, res, next) {
     return next(new Error('No pokemon found!'));
   }
 
-  req.db.collection.findOne({ ID: req.params.id }, (err, results) => res.status(200).json(results));
+  db.collection.findOne({ ID: req.params.id }, (err, results) => res.status(200).json(results));
 });
 
 apirouter.get('/type/:type', function(req, res, next) {
@@ -64,7 +65,7 @@ apirouter.get('/type/:type', function(req, res, next) {
   let paramType = req.params.type.firstUpperCase();
   console.log(paramType);
   let pokeList = [];
-  req.db.collection.find({
+  db.collection.find({
     $or: [
       {'Type 1': paramType}, 
       {'Type 2': paramType}

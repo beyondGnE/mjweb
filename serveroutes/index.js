@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 const request = require('request');
-const testURL = 'http://localhost:3000/';
+const config = require('../config/config');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   request({
-    url: testURL + 'api/pokemon',
+    url: config.testURL + 'api/pokemon',
     method: 'GET',
     json: {}
   }, (err, response, body) => {

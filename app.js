@@ -13,17 +13,17 @@ const pokeapi = require('./api/pokeapi');
 const app = express();
 
 // const db = require('mongodb').Db;
-const db = {};
-const MongoClient = require('mongodb').MongoClient;
-MongoClient.connect("mongodb://localhost:27017/pokemaster", { useNewURLParser: true }, function(err, database) {
-  db.collection = database.db('pokemaster').collection('pokedexgen1');
-  // console.log(db.collection.find().toArray((err, results) => console.log(results)));
-});
+// const db = {};
+// const MongoClient = require('mongodb').MongoClient;
+// MongoClient.connect("mongodb://localhost:27017/pokemaster", { useNewURLParser: true }, function(err, database) {
+//   db.collection = database.db('pokemaster').collection('pokedexgen1');
+//   // console.log(db.collection.find().toArray((err, results) => console.log(results)));
+// });
 
-app.use(function(req, res, next) {
-  req.db = db;
-  next();
-});
+// app.use(function(req, res, next) {
+//   req.db = db;
+//   next();
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
