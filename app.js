@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 const routes = require('./serveroutes/index');
 const users = require('./serveroutes/users');
+const library = require('./serveroutes/library');
 
 const pokeapi = require('./api/pokeapi');
 
@@ -42,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/library', library);
 
 app.use('/api/pokemon', pokeapi);
 
