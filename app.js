@@ -8,8 +8,10 @@ const bodyParser = require('body-parser');
 const routes = require('./serveroutes/index');
 const users = require('./serveroutes/users');
 const library = require('./serveroutes/library');
+const pokemaster = require('./serveroutes/pokemaster');
 
 const pokeapi = require('./api/pokeapi');
+const libraryapi = require('./api/libraryapi');
 
 const app = express();
 
@@ -44,8 +46,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/library', library);
+app.use('/pokemaster', pokemaster);
 
 app.use('/api/pokemon', pokeapi);
+app.use('/api/library', libraryapi);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

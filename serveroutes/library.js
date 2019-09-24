@@ -6,13 +6,13 @@ const config = require('../config/config');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   request({
-    url: config.testURL + 'api/pokemon',
+    url: config.testURL + 'api/library/books',
     method: 'GET',
     json: {}
   }, (err, response, body) => {
-    res.render('index', { 
-      title: `Pokemaster's Guide to Pokemon`,
-      pokedexgen1: body
+    res.render('library', { 
+      title: `The Library of Forgoing`,
+      books: body
     });
   });
 });
